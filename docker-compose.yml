@@ -1,0 +1,6 @@
+api-service:
+    environment:
+    - NODE_ENV=dev
+    build: .
+    ports:
+      - "80:3000"
