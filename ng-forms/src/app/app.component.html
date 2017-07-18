@@ -1,0 +1,39 @@
+<div *ngIf="!flag; else forminfo">
+  <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+    <div class="form-container">
+      <div class="row columns">
+        <h1>Simple Email</h1>
+        <label>To
+          <input type="text" formControlName="to">
+        </label>
+
+        <label>Cc
+          <input type="text" formControlName="cc">
+        </label>
+
+        <label>Bcc
+          <input type="text" formControlName="bcc">
+        </label>
+
+        <label>Subject
+          <input type="text" formControlName="subject">
+        </label>
+
+        <label>Text
+          <textarea  formControlName="text"></textarea>
+        </label>
+
+        <input type="submit" class="button expanded" value="Send Email" [disabled]="!rForm.valid">
+      </div>
+    </div>
+  </form>
+</div>
+
+<ng-template #forminfo>
+  <div class="form-container">
+    <div class="row columns">
+        <h1>Email Response</h1>
+        <p>{{ response }}</p>
+    </div>
+  </div>
+</ng-template>

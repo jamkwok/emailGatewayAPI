@@ -8,11 +8,9 @@ const EmailAPI = root.emailAPI;
 const optionsAPI = config[environment];
 
 /* GET home page. */
-router.get("/", (req, res) => {
-	res.send({ status: "OK" });
-});
 
 router.post("/api", (req, res) => {
+	console.log(req.body);
 	const options = clone(optionsAPI);
 	//turn on debug mode
 	if (req.body.debug) options.debug = true;
