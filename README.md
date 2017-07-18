@@ -1,7 +1,7 @@
 # email API Challenge
 
 ## Overview
-Runs a basic REST API that sends email via Mailgun and Sendgrid, if Mailgun were to fail then the api will automatically default to Sendgrid, however this can be simulated in the api by using the * failover: true * flag.
+Runs a basic REST API that sends email via Mailgun and Sendgrid, if Mailgun were to fail then the api will automatically default to Sendgrid, however this can be simulated in the api by using the **failover: true** flag.
 
 *  Uses Mailgun email validator to validate emails recipients are genuine.
 *  If Mailgun validator is down then it will check with simple regex.
@@ -62,7 +62,7 @@ mocha test
 
 ## Examples
 ### Required fields
-* to: Array
+* to: array
 * subject: string
 * text: string
 
