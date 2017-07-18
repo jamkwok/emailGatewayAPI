@@ -21,7 +21,7 @@ module.exports = module.exports.toString();
 /***/ 140:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!flag; else forminfo\">\n  <form [formGroup]=\"rForm\" (ngSubmit)=\"addPost(rForm.value)\">\n    <div class=\"form-container\">\n      <div class=\"row columns\">\n        <h1>Simple Email</h1>\n        <label>To\n          <input type=\"text\" formControlName=\"to\">\n        </label>\n\n        <label>Cc\n          <input type=\"text\" formControlName=\"cc\">\n        </label>\n\n        <label>Bcc\n          <input type=\"text\" formControlName=\"bcc\">\n        </label>\n\n        <label>Subject\n          <input type=\"text\" formControlName=\"subject\">\n        </label>\n\n        <label>Text\n          <textarea  formControlName=\"text\"></textarea>\n        </label>\n\n        <input type=\"submit\" class=\"button expanded\" value=\"Send Email\" [disabled]=\"!rForm.valid\">\n      </div>\n    </div>\n  </form>\n</div>\n\n<ng-template #forminfo>\n  <div class=\"form-container\">\n    <div class=\"row columns\">\n        <h1>Email Response</h1>\n        <p>{{ response }}</p>\n    </div>\n  </div>\n</ng-template>\n"
+module.exports = "<div *ngIf=\"!flag; else forminfo\">\n  <form [formGroup]=\"rForm\" (ngSubmit)=\"addPost(rForm.value)\">\n    <div class=\"form-container\">\n      <div class=\"row columns\">\n        <h1>Simple Email</h1>\n\n        <label>Multiple emails are comma delimited.\n        </label>\n\n        <label>To\n          <input type=\"text\" formControlName=\"to\">\n        </label>\n\n        <label>Cc\n          <input type=\"text\" formControlName=\"cc\">\n        </label>\n\n        <label>Bcc\n          <input type=\"text\" formControlName=\"bcc\">\n        </label>\n\n        <label>Subject\n          <input type=\"text\" formControlName=\"subject\">\n        </label>\n\n        <label>Text\n          <textarea  formControlName=\"text\"></textarea>\n        </label>\n\n        <input type=\"submit\" class=\"button expanded\" value=\"Send Email\" [disabled]=\"!rForm.valid\">\n      </div>\n    </div>\n  </form>\n</div>\n\n<ng-template #forminfo>\n  <div class=\"form-container\">\n    <div class=\"row columns\">\n        <h1>Email Response</h1>\n        <p>{{ response }}</p>\n    </div>\n  </div>\n</ng-template>\n"
 
 /***/ }),
 
@@ -122,13 +122,13 @@ var AppComponent = (function () {
         };
         //Create recipient arrays if required.
         if (post.to) {
-            payload['to'] = post.to.indexOf(',') > 0 ? post.to.split(",") : [post.to];
+            payload['to'] = post.to.indexOf(',') > 0 ? post.to.replace(/ /g, '').split(",") : [post.to.replace(/ /g, '')];
         }
         if (post.cc) {
-            payload['cc'] = post.cc.indexOf(',') > 0 ? post.cc.split(",") : [post.cc];
+            payload['cc'] = post.cc.indexOf(',') > 0 ? post.cc.replace(/ /g, '').split(",") : [post.cc.replace(/ /g, '')];
         }
         if (post.bcc) {
-            payload['bcc'] = post.bcc.indexOf(',') > 0 ? post.bcc.split(",") : [post.bcc];
+            payload['bcc'] = post.bcc.indexOf(',') > 0 ? post.bcc.replace(/ /g, '').split(",") : [post.bcc.replace(/ /g, '')];
         }
         this.http.post('/api', payload).map(function (res) {
             res.json();

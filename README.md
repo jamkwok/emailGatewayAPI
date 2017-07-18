@@ -36,7 +36,7 @@ Mailgun and Sendgrid credentials are stored in the env.json. On launching the ap
 export NODE_ENV=dev
 ```
 ## Front end User Guide
-* Emails are comma delimited with no spaces.
+* Emails are comma delimited with automatic removal of white space.
 * validator allows send email option after required fields are sent.
 
 ## Technology Stack

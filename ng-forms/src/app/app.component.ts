@@ -42,13 +42,13 @@ export class AppComponent {
 
    //Create recipient arrays if required.
    if (post.to) {
-     payload['to']= post.to.indexOf(',') > 0 ? post.to.split(",") : [ post.to ];
+     payload['to']= post.to.indexOf(',') > 0 ? post.to.replace(/ /g, '').split(",") : [ post.to.replace(/ /g, '') ];
    }
    if (post.cc) {
-     payload['cc'] = post.cc.indexOf(',') > 0 ? post.cc.split(",") : [ post.cc ];
+     payload['cc'] = post.cc.indexOf(',') > 0 ? post.cc.replace(/ /g, '').split(",") : [ post.cc.replace(/ /g, '') ];
    }
    if (post.bcc) {
-     payload['bcc'] = post.bcc.indexOf(',') > 0 ? post.bcc.split(",") : [ post.bcc ];
+     payload['bcc'] = post.bcc.indexOf(',') > 0 ? post.bcc.replace(/ /g, '').split(",") : [ post.bcc.replace(/ /g, '') ];
    }
 
    this.http.post('/api', payload).map((res) => {
