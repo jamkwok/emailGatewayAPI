@@ -20,7 +20,7 @@ Runs a basic REST API that sends email via Mailgun and Sendgrid, if Mailgun were
 * No authentication is required for the scope of this exercise
 * No client library should be used to integrate with Mailgun or Sendgrid. A simple HTTP client of choice can be used to handcraft HTTP requests to the email gateway services.
 
-## Deployment
+## Api Deployment
 * Install docker and docker-compose
 * Requires internet connectivity to access Mailgun and Sendgrid (Requires a NAT gateway if the host is located in a private subnet)
 * Update env.json with Mailgun API key to send emails, Mailgun domain and validation key for email validation.
@@ -35,8 +35,12 @@ Mailgun and Sendgrid credentials are stored in the env.json. On launching the ap
 ```shell
 export NODE_ENV=dev
 ```
+## Front end User Guide
+* Emails are comma delimited with no spaces.
+* validator allows send email option after required fields are sent.
 
 ## Technology Stack
+* Angular 4
 * NodeJS 6 with express 4.0 framework using modules request-promise as the transport for crafted requests.
 * Docker
 * Node Class in lib/index.js
